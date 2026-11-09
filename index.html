@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VulnLab — Web Security Playground</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">V</span><div><b>VulnLab</b><small>Web Security Playground</small></div></div>
+    <nav class="top-nav"><a href="index.html">Dashboard</a><a href="login.html">Login Lab</a></nav><span class="local-tag">LOCAL DEMO</span>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">TRAINING ENVIRONMENT</p>
+      <h1>Explore common web security flaws.</h1>
+      <p class="sub">A self-contained simulator with fictional records. Try the parameter challenge and inspect how each demo behaves.</p>
+    </section>
+
+    <section class="notice">
+      <b>Sandbox mode:</b> This project simulates vulnerability outcomes in browser-side JavaScript. It has no database, server endpoint, account system, or real exploit path.
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">01 / PARAMETER ACCESS</p><h2>Record viewer</h2></div><span class="pill pill-warn">IDOR SIMULATION</span></div>
+        <p class="muted">Change the numeric <code>id</code> parameter. In this training scenario, record <b>7</b> represents an access-control mistake.</p>
+        <form id="record-form" class="inline-form">
+          <label for="record-id">Record ID</label>
+          <input id="record-id" name="id" type="number" min="1" max="99" value="3">
+          <button type="submit">Load record</button>
+        </form>
+        <div id="record-output" class="result" aria-live="polite">Choose an ID and load a record.</div>
+        <p class="hint">Try the value <code>7</code> to see the intentionally exposed fictional record.</p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">02 / INPUT HANDLING</p><h2>Reflected input</h2></div><span class="pill">XSS CONCEPT</span></div>
+        <p class="muted">Enter text and see it reflected. The demo displays input as plain text, not executable HTML or JavaScript.</p>
+        <form id="reflect-form" class="stack-form">
+          <label for="reflect-input">Search phrase</label>
+          <input id="reflect-input" maxlength="120" placeholder="Type a phrase…">
+          <button type="submit">Preview reflection</button>
+        </form>
+        <div id="reflect-output" class="result" aria-live="polite">Your preview will appear here.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">03 / QUERY LOGIC</p><h2>SQL injection concept</h2></div><span class="pill">SQLi SIMULATION</span></div>
+        <p class="muted">This mock login recognizes a few teaching inputs and explains the logic flaw. It does not send a query to a database.</p>
+        <form id="login-form" class="stack-form">
+          <label for="username">Username</label>
+          <input id="username" autocomplete="off" placeholder="demo">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Any text">
+          <button type="submit">Run mock login</button>
+        </form>
+        <div id="login-output" class="result" aria-live="polite">No database connection is used.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">04 / SECURITY CHECK</p><h2>Mitigation notes</h2></div><span class="pill pill-good">DEFENSE</span></div>
+        <ul class="notes">
+          <li><b>Object access:</b> Check authorization on the server for every requested record.</li>
+          <li><b>Reflected content:</b> Use context-aware output encoding and safe DOM APIs.</li>
+          <li><b>Database queries:</b> Use parameterized queries; never concatenate raw input into SQL.</li>
+          <li><b>Validation:</b> Treat client-side checks as convenience, not a security boundary.</li>
+        </ul>
+      </section>
+    </div>
+    <footer>VulnLab · fictional data · browser-only training simulator</footer>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Lab — VulnLab</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand brand-link" href="index.html"><span class="brand-mark">V</span><div><b>VulnLab</b><small>Web Security Playground</small></div></a>
+    <nav class="top-nav"><a href="index.html">Dashboard</a><a class="active" href="login.html">Login Lab</a></nav>
+    <span class="local-tag">LOCAL DEMO</span>
+  </header>
+  <main class="login-wrap">
+    <section class="login-intro">
+      <p class="eyebrow">05 / AUTHENTICATION LAB</p>
+      <h1>Login lab.</h1>
+      <p class="sub">A fictional sign-in page with controlled demonstrations of username discovery, weak-password behavior, and rate-limit logic.</p>
+      <div class="notice"><b>Simulation only:</b> credentials are hard-coded fictional values in browser JavaScript. No real accounts, password capture, network requests, or brute-force requests are involved.</div>
+    </section>
+    <section class="login-card panel">
+      <div class="panel-head"><div><p class="eyebrow">MEMBER ACCESS</p><h2>Sign in to DemoPortal</h2></div><span class="pill pill-warn">WEAK AUTH SIM</span></div>
+      <form id="auth-form" class="stack-form">
+        <label for="auth-user">Username</label>
+        <input id="auth-user" autocomplete="off" placeholder="Enter username">
+        <label for="auth-pass">Password</label>
+        <input id="auth-pass" type="password" autocomplete="off" placeholder="Enter password">
+        <button type="submit">Sign in</button>
+      </form>
+      <div id="auth-output" class="result" aria-live="polite">Login responses will appear here.</div>
+      <div class="demo-creds"><b>Fictional demo account</b><br>Username: <code>admin</code><br>Password: <code>admin123</code></div>
+    </section>
+    <section class="panel login-notes">
+      <p class="eyebrow">TEST CASES</p><h2>What to inspect</h2>
+      <ul class="notes">
+        <li><b>Username enumeration:</b> compare the response for an unknown username with a known username.</li>
+        <li><b>Weak password:</b> the demo account uses a deliberately weak fictional password.</li>
+        <li><b>Rate-limit simulation:</b> repeated failed attempts trigger a temporary in-page lockout counter.</li>
+        <li><b>Client-side trust:</b> inspect the source to see why browser-only authentication is not real access control.</li>
+      </ul>
+    </section>
+    <p class="back-link"><a href="index.html">← Back to dashboard</a></p>
+  </main>
+  <script src="js/login.js"></script>
+</body>
+</html>
